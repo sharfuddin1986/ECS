@@ -2,3 +2,5 @@
 Go to ECS
 create cluster- name(anything)
 infrastuctre-fargate -create
+setup instance install dokcerfile 
+Ecr create reposititr
