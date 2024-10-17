@@ -2,5 +2,8 @@
 Go to ECS
 create cluster- name(anything)
 infrastuctre-fargate -create
-setup instance install dokcerfile 
+setup instance install dokcerfile,install aws cli configure 
 Ecr create reposititr
+after login with ecr user name link 
+
+sudo docker build -t pythonimage/images .
