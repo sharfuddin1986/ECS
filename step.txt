@@ -1,0 +1,4 @@
+####
+Go to ECS
+create cluster- name(anything)
+infrastuctre-fargate -create
