@@ -1,0 +1,50 @@
+t2 large 
+install docker and minikube
+sudo usermod -aG docker $USER && newgrp docker
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+sudo chmod 777 /var/run/docker.sock 
+cd /usr/local/bin/
+minikube version
+minikube start --driver=docker
+minikube start
+minikube status
+
+
+sudo snap install kubectl --classic
+kubectl version
+kubectl get pod -A
+ 
+
+install helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+helm version
+
+add repo
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+
+install promethus 
+helm install prometheus prometheus-community/prometheus
+kubectl get pods
+promethus server and node is runing state
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
+kubectl port-forward svc/prometheus-server 8080:80 -n default
+local laptop powershell use
+ssh -i <your-key.pem> -L 8080:localhost:8080 ec2-user@<your-ec2-public-ip>
+http://localhost:8080
+promettheus page is open now 
+
+
+helm repo add grafana https://grafana.github.io/helm-charts
+
+helm repo update
+helm install grafana grafana/grafana
+get password through link
+kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+kubectl get svc
+ kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext
+kubectl get cm
+kubectl edit cm prometheus-server
+
